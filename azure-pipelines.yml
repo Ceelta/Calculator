@@ -16,7 +16,7 @@ steps:
 
 - script: 
     npm run build-pro
-  displayName: 'npm install'
+  displayName: 'build-pro'
 
 - task: AzureFileCopy@4
   inputs:
