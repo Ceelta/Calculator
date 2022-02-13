@@ -21,7 +21,7 @@ steps:
 - task: AzureFileCopy@4
   inputs:
     SourcePath: '$(System.DefaultWorkingDirectory)\dist\pro\app.js'
-    azureSubscription: 'Pubish vrdelvalle'
+    azureSubscription: 'WebDeployResource'
     Destination: 'AzureBlob'
     storage: 'calculatortest'
     ContainerName: '$web'
