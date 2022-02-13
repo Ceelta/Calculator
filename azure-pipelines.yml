@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
 - task: NodeTool@0
@@ -16,12 +16,14 @@ steps:
 
 - script: 
     npm run build-pro
-  displayName: 'npm install'
+  displayName: 'build-pro'
 
-- task: AzureFileCopy@4
+
+
+- task: AzureFileCopy@3
   inputs:
     SourcePath: '$(System.DefaultWorkingDirectory)\dist\pro\app.js'
-    azureSubscription: 'Pubish vrdelvalle'
+    azureSubscription: 'WebDeployResource'
     Destination: 'AzureBlob'
     storage: 'calculatortest'
     ContainerName: '$web'
