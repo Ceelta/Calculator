@@ -24,4 +24,4 @@ steps:
     azureSubscription: 'WebDeployResource'
     Destination: 'AzureBlob'
     storage: 'calculatortest'
-    ContainerName: '$web'
+    ContainerName: 'web'
