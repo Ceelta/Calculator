@@ -33,7 +33,7 @@ class OperatorsReducer {
 
     static _equalOperation(state) {
         var resultOperation = this._processOperation(state)
-        if (resultOperation == Infinity) {
+        if (resultOperation == Infinity || isNaN(resultOperation)) {
             state = state = this._setState(state, null, null, null, "ERROR")
         } else {
             state = this._setState(state, resultOperation, null, null, null)
