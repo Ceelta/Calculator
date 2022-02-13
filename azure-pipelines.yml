@@ -1,0 +1,27 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+  
+- script: 
+    npm install
+  displayName: 'npm install'
+
+- script: 
+    npm run build-pro
+  displayName: 'npm install'
+
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: '$(System.DefaultWorkingDirectory)\dist\pro\app.js'
+    azureSubscription: 'Pubish vrdelvalle'
+    Destination: 'AzureBlob'
+    storage: 'calculatortest'
+    ContainerName: '$web'
