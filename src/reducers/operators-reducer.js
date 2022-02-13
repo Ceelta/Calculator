@@ -21,8 +21,7 @@ class OperatorsReducer {
                     state = this._setState(state, null, state.number, action.data.operator, null)
                 } else {
                     state = this._equalOperation(state)
-                    state.result = null
-                    state.operator = action.data.operator
+                    state = this._setState(state, null, state.number, action.data.operator, null)
                 }
                 break
             case "=":
