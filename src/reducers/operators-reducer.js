@@ -17,17 +17,27 @@ class OperatorsReducer {
             case "-":
             case "x":
             case "/":
-                state = this._setState(state, null, state.number, action.data.operator, null)
-                break
-            case "=":
-                var resultOperation = this._processOperation(state)
-                if (resultOperation == Infinity) {
-                    state = state = this._setState(state, null, null, null, "ERROR")
+                if (state.result == null) {
+                    state = this._setState(state, null, state.number, action.data.operator, null)
                 } else {
-                    state = this._setState(state, resultOperation, resultOperation, null, null)
+                    state = this._equalOperation(state)
+                    state.result = null
+                    state.operator = action.data.operator
                 }
                 break
+            case "=":
+                state = this._equalOperation(state)
+                break
+        }
+        return state
+    }
 
+    static _equalOperation(state) {
+        var resultOperation = this._processOperation(state)
+        if (resultOperation == Infinity) {
+            state = state = this._setState(state, null, null, null, "ERROR")
+        } else {
+            state = this._setState(state, resultOperation, null, null, null)
         }
         return state
     }
