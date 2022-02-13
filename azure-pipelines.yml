@@ -18,10 +18,12 @@ steps:
     npm run build-pro
   displayName: 'build-pro'
 
-- task: AzureFileCopy@4
+
+
+- task: AzureFileCopy@3
   inputs:
     SourcePath: '$(System.DefaultWorkingDirectory)\dist\pro\app.js'
     azureSubscription: 'WebDeployResource'
     Destination: 'AzureBlob'
     storage: 'calculatortest'
-    ContainerName: 'web'
+    ContainerName: '$web'
