@@ -19,11 +19,11 @@ class NumbersComponent extends React.Component {
     }
 
     #renderButton(number) {
-        return (<button onClick={() => { this.props.buttonNumberClick(number) }}>{number}</button>)
+        return (<button className="button buttonNumber" onClick={() => { this.props.buttonNumberClick(number) }}>{number}</button>)
     }
 
     render() {
-        return (<div>
+        return (<div className="numbers">
             <div>
                 {this.#renderButton(1)}
                 {this.#renderButton(2)}

@@ -11,17 +11,21 @@ class OperatorsReducer {
     static _operatorClick(state, action) {
         switch (action.data.operator) {
             case "C":
-                state = this._setState(state, null, null, null)
+                state = this._setState(state, null, null, null, null)
                 break
             case "+":
             case "-":
             case "x":
             case "/":
-                state = this._setState(state, null, state.number, action.data.operator)
+                state = this._setState(state, null, state.number, action.data.operator, null)
                 break
             case "=":
                 var resultOperation = this._processOperation(state)
-                state = this._setState(state, resultOperation, resultOperation, null)
+                if (resultOperation == Infinity) {
+                    state = state = this._setState(state, null, null, null, "ERROR")
+                } else {
+                    state = this._setState(state, resultOperation, resultOperation, null, null)
+                }
                 break
 
         }
@@ -47,10 +51,11 @@ class OperatorsReducer {
         return result
     }
 
-    static _setState(state, number, result, operator) {
+    static _setState(state, number, result, operator, error) {
         state.number = number
         state.result = result
         state.operator = operator
+        state.error = error
         return state
     }
 

@@ -18,18 +18,22 @@ class OperatorsComponent extends React.Component {
         return result
     }
 
-    #renderButton(operator) {
-        return (<button onClick={() => { this.props.buttonOperatorClick(operator) }}>{operator}</button>)
+    #renderButton(operator, className) {
+        return (<button className={className} onClick={() => { this.props.buttonOperatorClick(operator) }}>{operator}</button>)
     }
 
     render() {
         return (<div>
-            {this.#renderButton("C")}
-            {this.#renderButton("+")}
-            {this.#renderButton("-")}
-            {this.#renderButton("x")}
-            {this.#renderButton("/")}
-            {this.#renderButton("=")}
+            <div>
+                {this.#renderButton("C", "button buttonOperation")}
+                {this.#renderButton("+", "button buttonOperation")}
+                {this.#renderButton("-", "button buttonOperation")}
+                {this.#renderButton("x", "button buttonOperation")}
+                {this.#renderButton("/", "button buttonOperation")}
+            </div>
+            <div>
+                {this.#renderButton("=", "buttonEqual buttonOperation")}
+            </div>
         </div>)
     }
 }

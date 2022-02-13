@@ -5,7 +5,7 @@ import OperatorsComponent from "./operators-component"
 
 class MainComponent extends React.Component {
     render() {
-        return (<div>
+        return (<div className='main'>
             <ScreenComponent />
             <NumbersComponent />
             <OperatorsComponent />

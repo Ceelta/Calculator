@@ -12,6 +12,13 @@ class ScreenComponent extends React.Component {
     }
 
     render() {
+        return (<div className="screen">
+            {this.props.error != null && this.renderError()}
+            {this.props.error == null && this.renderResult()}
+        </div>)
+    }
+
+    renderResult() {
         return (<div>
             <div>
                 {this.props.operator != null && this.props.result}
@@ -22,6 +29,12 @@ class ScreenComponent extends React.Component {
             <div>
                 {this.props.number}
             </div>
+        </div>)
+    }
+
+    renderError() {
+        return (<div>
+            {this.props.error}
         </div>)
     }
 }
